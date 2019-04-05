@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Example3_4
+namespace Example3_5
 {
     public class Quadrilateral
     {
@@ -150,11 +150,26 @@ namespace Example3_4
             return false;
         }
     }
+    public class Rectangle : Parallelogram
+    {
+        public bool is_Rectangle()
+        {
+            if (is_Parallelogram())
+            {
+                if ((X1 - X3) * (X1 - X3) + (Y1 - Y3) * (Y1 - Y3) == (X2 - X4) * (X2 - X4) + (Y2 - Y4) * (Y2 - Y4))
+                {
+                    return true;
+                }
+                return false;
+            }
+            return false;
+        }
+    }
     class Program
     {
         static void Main(string[] args)
         {
-            Parallelogram q = new Parallelogram();
+            Rectangle q = new Rectangle();
             Console.Write("请输入第一个点的横坐标和纵坐标：\n");
             q.x1 = double.Parse(Console.ReadLine());
             q.y1 = double.Parse(Console.ReadLine());
@@ -167,13 +182,13 @@ namespace Example3_4
             Console.Write("请输入第四个点的横坐标和纵坐标：\n");
             q.x4 = double.Parse(Console.ReadLine());
             q.y4 = double.Parse(Console.ReadLine());
-            if (q.is_Parallelogram())
+            if (q.is_Rectangle())
             {
-                Console.Write("是平行四边形\n");
+                Console.Write("是矩形\n");
             }
             else
             {
-                Console.Write("不是平行四边形\n");
+                Console.Write("不是矩形\n");
             }
             Console.ReadKey();
         }
